@@ -1,34 +1,30 @@
-// index.js
+// index.js code
 document.addEventListener('DOMContentLoaded', () => {
     let form = document.getElementById('github-form');
     let resultsDiv = document.getElementById('results');
-    let searchType = 'users'; // Variable to toggle between searching users and repositories
-    
-    // Create a button to toggle search type
+    let searchType = 'users';
+  
     let toggleBtn = document.createElement('button');
     toggleBtn.textContent = 'Search Repos';
     form.appendChild(toggleBtn);
-    
-    // Event listener to toggle search type when button is clicked
+  
     toggleBtn.addEventListener('click', (e) => {
         e.preventDefault();
         searchType = searchType === 'users' ? 'repositories' : 'users';
         toggleBtn.textContent = searchType === 'users' ? 'Search Repos' : 'Search Users';
     });
 
-    // Event listener for the form submission
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-        let search = document.getElementById('search').value.trim(); // Get the search input and trim spaces
-        if (!search) return; // Prevent empty searches
-        resultsDiv.innerHTML = '<p>Loading...</p>'; // Show loading message
+        let search = document.getElementById('search').value.trim(); 
+        if (!search) return; 
+        resultsDiv.innerHTML = '<p>Loading...</p>'; 
         
-        // Determine the correct API URL based on search type
+       
         let apiUrl = searchType === 'users'
             ? `https://api.github.com/search/users?q=${search}`
             : `https://api.github.com/search/repositories?q=${search}`;
         
-        // Fetch data from GitHub API
         fetch(apiUrl, { 
             headers: { 
                 'Accept': 'application/vnd.github.v3+json'
@@ -37,10 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
             .then(response => response.json())
             .then(data => {
-                resultsDiv.innerHTML = ''; // Clear results before displaying new ones
+                resultsDiv.innerHTML = ''; 
                 
                 if (searchType === 'users') {
-                    // Display user search results
+                    
                     data.items.forEach(user => {
                         let userDiv = document.createElement('div');
                         userDiv.innerHTML = `
@@ -53,15 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>`;
                         resultsDiv.appendChild(userDiv);
                     });
-                    
-                    // Attach event listeners to 'View Repos' buttons
+
                     document.querySelectorAll('button[data-username]').forEach(btn => {
                         btn.addEventListener('click', (e) => {
                             fetchUserRepos(e.target.dataset.username);
                         });
                     });
                 } else {
-                    // Display repository search results
+                    
                     data.items.forEach(repo => {
                         let repoDiv = document.createElement('div');
                         repoDiv.innerHTML = `
@@ -74,10 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
             })
-            .catch(error => console.error('Error:', error)); // Handle errors
+            .catch(error => console.error('Error:', error)); 
     });
     
-    // Function to fetch and display repositories for a selected user
     function fetchUserRepos(username) {
         fetch(`https://api.github.com/users/${username}/repos`)
             .then(response => response.json())

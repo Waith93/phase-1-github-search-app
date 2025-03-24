@@ -1,13 +1,56 @@
-#main {
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+input, button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.user-card {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  background: #e3e3e3;
+  border-radius: 8px;
 }
 
-#github-container {
-  display: flex;
+.user-card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
-ul {
-  list-style: none;
+.repo-list {
+  background: #ddd;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
 }

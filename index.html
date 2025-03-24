@@ -3,7 +3,7 @@
   <meta charset='UTF-8'/>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
   <meta http-equiv='X-UA-Compatible' content='ie=edge'/>
-  <title>Document</title>
+  <title>GitHub User Search</title>
   <link rel='stylesheet' href='index.css'/>
 </head>
 <body>
@@ -11,10 +11,11 @@
 
     <h2>GitHub Search</h2>
 
-    <form id='github-form'>
-      <input id='search' type='text' name='search'>
-      <input type='submit' name='submit'/>
-    </form>
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="Search GitHub..." required>
+      <button type="submit">Search</button>
+      <button type="button" id="toggle-search">Search Repos</button>
+  </form>
 
     <div id='results'>
 
