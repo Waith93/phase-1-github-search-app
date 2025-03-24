@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function (){
         
         let searchClean = search.split(' ').join('')
         
-        fetch("https://api.github.com/users/"+searchClean)
+        fetch("https://dog.ceo/api/breeds/list/all"+searchClean)
             .then((result) => result.json())
             .then((data) => {
     
