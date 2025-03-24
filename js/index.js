@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function (){
-    //selector to capture form 
+    
     let form = document.getElementById('github-form')
 
     form.addEventListener('submit', function (e){
         e.preventDefault();
-        //search input selector 
+        
         let search = document.getElementById("search").value
-        // clean the input 
+        
         let searchClean = search.split(' ').join('')
         
         fetch("https://api.github.com/users/"+searchClean)

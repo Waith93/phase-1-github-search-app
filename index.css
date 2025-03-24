@@ -6,25 +6,30 @@ body {
   text-align: center;
 }
 
-.container {
-  max-width: 600px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+#github-form {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
-input, button {
+input[type="text"] {
   padding: 10px;
-  margin: 5px;
-  font-size: 16px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
 }
 
 button {
+  padding: 10px 15px;
+  margin-left: 10px;
   background-color: #007bff;
   color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -32,25 +37,74 @@ button:hover {
   background-color: #0056b3;
 }
 
-.user-card {
+#results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/.result-item, .repo-item {
+  background: white;
+  padding: 15px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
   display: flex;
   align-items: center;
-  margin: 10px 0;
-  padding: 10px;
-  background: #e3e3e3;
-  border-radius: 8px;
+  gap: 15px;
 }
 
-.user-card img {
+.result-item img {
+  border-radius: 50%;
   width: 50px;
   height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
 }
 
-.repo-list {
-  background: #ddd;
-  margin: 5px;
-  padding: 10px;
+.result-item a, .repo-item a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.result-item a:hover, .repo-item a:hover {
+  text-decoration: underline;
+}
+
+.result-item button {
+  padding: 5px 10px;
+  background: #28a745;
+  border: none;
   border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.result-item button:hover {
+  background: #218838;
+}
+
+.repo-item {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+  input[type="text"] {
+      width: 100%;
+  }
+
+  #results {
+      max-width: 100%;
+      padding: 0 10px;
+  }
+
+  .result-item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
 }
